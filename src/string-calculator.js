@@ -10,7 +10,13 @@ export function add(numbers) {
     numbers = parts[1];
   }
 
-  const nums = numbers.split(delimiter).map(Number);
+  const nums = numbers.split(delimiter).map((num) => {
+    if (isNaN(num)) {
+      throw new Error(`Invalid number: ${num}`);
+    }
+    return Number(num);
+  });
+
   const negatives = nums.filter((num) => num < 0);
   if (negatives.length > 0) {
     throw new Error(`Negative numbers not allowed: ${negatives.join(", ")}`);

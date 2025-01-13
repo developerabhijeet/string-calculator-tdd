@@ -25,4 +25,7 @@ describe("String Calculator", () => {
       "Negative numbers not allowed: -2, -3"
     );
   });
+  test("should throw an exception for non-numeric values", () => {
+    expect(() => add("1,abc,2")).toThrow("Invalid number: abc");
+  });
 });
