@@ -1,4 +1,4 @@
-import { add } from "./string-calculator";
+import { add, multiplication } from "./string-calculator";
 
 describe("String Calculator", () => {
   test("should return 0 for an empty string", () => {
@@ -27,5 +27,26 @@ describe("String Calculator", () => {
   });
   test("should throw an exception for non-numeric values", () => {
     expect(() => add("1,abc,2")).toThrow("Invalid number: abc");
+  });
+
+  // Multiplication Specs
+  test("should return the 0 for empty string", () => {
+    expect(multiplication("")).toBe(0);
+  });
+
+  test("should return the number itself if single digit", () => {
+    expect(multiplication("1")).toBe(1);
+  });
+  test("should throw the error of negative digits ", () => {
+    expect(() => multiplication("1,-2,-3")).toThrow(
+      "Negative numbers not allowed: -2, -3"
+    );
+  });
+
+  test("should return the multiplication of two numbers", () => {
+    expect(multiplication("2,2")).toBe(4);
+  });
+  test("should return the multiplication of multiple numbers", () => {
+    expect(multiplication("1,2,3,4,5,6,7,2")).toBe(10080);
   });
 });
